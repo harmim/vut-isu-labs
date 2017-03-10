@@ -1,6 +1,6 @@
 %include "rw32-2017.inc"
 
-; Zamìòte horní polovinu hodnoty v registru EAX s hodnotou v registru BX
+; ZamÄ›Åˆte hornÃ­ polovinu hodnoty v registru EAX s hodnotou v registru BX
 
 section .text
 main:
