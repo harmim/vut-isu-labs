@@ -1,5 +1,5 @@
 ; Autor: Dominik Harmim <xharmi00@stud.fit.vutbr.cz>
-; razeni pole ruznymi algoritmi s vyberem smeru razeni
+; razeni pole ruznymi algoritmy s vyberem smeru razeni
 ; BubbleSort, InsertionSort
 
 %include "rw32-2017.inc"
