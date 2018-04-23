@@ -175,7 +175,7 @@ main:
 ; arg1 - ukazatel na vstupni retezec
 ; return - delka retezce v EAX
 StringLength:
-    ENTER 2, 0
+    ENTER 4, 0
     MOV [EBP - 8], ESI ; ulozeni ESI
     
     MOV [EBP - 4], DWORD 0 ; vynulovaci pocitadla znaku
