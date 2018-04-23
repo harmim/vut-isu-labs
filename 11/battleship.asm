@@ -54,7 +54,7 @@ main:
 ; Funkce provede zaznamenani pozice cile a bude si ho pamatovat pro dalsi casti prikladu
 ; Nactete ze stdin alespon 3 pozice kam maji dopadnout rakety
 ReadShots:
-    ENTER 2, 0
+    ENTER 8, 0
     PUSH EAX
     PUSH ECX
     PUSH ESI
