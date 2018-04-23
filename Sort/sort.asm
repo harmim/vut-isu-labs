@@ -44,7 +44,7 @@ main:
 ; arg2 - velikost pole pro serazeni
 ; arg3 - smer razeni (0 => ASC - vzestupne, 1 => DESC - sestupne)
 BubblesortAsc:
-    ENTER 2, 0
+    ENTER 8, 0
     PUSH EAX
     PUSH ECX
     PUSH EDX
@@ -136,7 +136,7 @@ BubblesortAsc:
 ; arg2 - velikost pole pro serazeni
 ; arg3 - smer razeni (0 => ASC - vzestupne, 1 => DESC - sestupne)
 InsertionSort:
-    ENTER 2, 0
+    ENTER 8, 0
     PUSH EAX
     PUSH ECX
     PUSH EDX
