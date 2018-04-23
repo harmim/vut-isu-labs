@@ -1,4 +1,4 @@
-znaménka%include "rw32-2017.inc"
+znamÃ©nka%include "rw32-2017.inc"
 
 %macro WRITE_ARRAY 4
 	push esi
@@ -45,17 +45,17 @@ section .data
 
 section .text
 
-;--- Úkol 1 ---
+;--- Ãškol 1 ---
 ;
-;Naprogramujte funkci "getMin", která v poli 16bitovıch èísel bez znaménka nalezne minimum a vrátí jeho hodnotu.
+;Naprogramujte funkci "getMin", kterÃ¡ v poli 16bitovÃ½ch Ã¨Ã­sel bez znamÃ©nka nalezne minimum a vrÃ¡tÃ­ jeho hodnotu.
 ;
 ;unsigned short getMin(ESI, ECX)
 ;  - vstup:
-;    - ESI: ukazatel na zaèátek pole 16bitovıch prvkù bez znaménka
-;    - ECX: poèet prvkù pole (32bitová hodnota bez znaménka)
-;  - vıstup:
-;    - AX: hodnota 16bitového minima bez znaménka     
-;  - funkce musí zachovat obsah všech registrù, kromì registru EAX a pøíznakového registru
+;    - ESI: ukazatel na zaÃ¨Ã¡tek pole 16bitovÃ½ch prvkÃ¹ bez znamÃ©nka
+;    - ECX: poÃ¨et prvkÃ¹ pole (32bitovÃ¡ hodnota bez znamÃ©nka)
+;  - vÃ½stup:
+;    - AX: hodnota 16bitovÃ©ho minima bez znamÃ©nka     
+;  - funkce musÃ­ zachovat obsah vÅ¡ech registrÃ¹, kromÃ¬ registru EAX a pÃ¸Ã­znakovÃ©ho registru
 
 getMin:
     ENTER 0, 0
@@ -86,28 +86,28 @@ getMin:
     RET
 
 
-;--- Úkol 2 ---
+;--- Ãškol 2 ---
 ;
-;Naprogramujte funkci "addX", která k jednotlivım prvkùm pole A pøiète hodnotu x a jednotlivé vısledky uloí do pole B.
+;Naprogramujte funkci "addX", kterÃ¡ k jednotlivÃ½m prvkÃ¹m pole A pÃ¸iÃ¨te hodnotu x a jednotlivÃ© vÃ½sledky uloÅ¾Ã­ do pole B.
 ;
-;Délka polí je dána parametrem N. Funkce musí bıt naprogramována s vyuitím pøedávání parametrù na zásobníku tak,
-;e parametry funkce se ukládají na zásobník od posledního do prvního (zprava doleva),
-;parametry ze zásobníku uklízí volající a vısledek funkce se vrací v registru EAX.
+;DÃ©lka polÃ­ je dÃ¡na parametrem N. Funkce musÃ­ bÃ½t naprogramovÃ¡na s vyuÅ¾itÃ­m pÃ¸edÃ¡vÃ¡nÃ­ parametrÃ¹ na zÃ¡sobnÃ­ku tak,
+;Å¾e parametry funkce se uklÃ¡dajÃ­ na zÃ¡sobnÃ­k od poslednÃ­ho do prvnÃ­ho (zprava doleva),
+;parametry ze zÃ¡sobnÃ­ku uklÃ­zÃ­ volajÃ­cÃ­ a vÃ½sledek funkce se vracÃ­ v registru EAX.
 ;
 ;int addX(unsigned short *pA, unsigned int N, unsigned short x, unsigned short *pB)
 ;  - vstup:
-;    pA: ukazatel na pole A (pole A obsahuje 16bitové hodnoty bez znaménka)
-;     N: poèet prvkù pole A (32bitové èíslo bez znaménka)
-;     x: hodnota x (16bitové èíslo bez znaménka)
-;    pB: ukazatel na pole B (pole B bude obsahovat 16bitové hodnoty bez znaménka)
-;  - vıstup:
-;    - EAX =  0: v pøípadì, e nenastala ádná chyba  
-;    - EAX = -1: v pøípadì, e je neplatnı ukazatel *pA (tj. pA == 0)
-;    - EAX = -2: v pøípadì, e je neplatnı ukazatel *pB (tj. pB == 0)
-;  - funkce musí zachovat obsah všech registrù, kromì registru EAX a pøíznakového registru
+;    pA: ukazatel na pole A (pole A obsahuje 16bitovÃ© hodnoty bez znamÃ©nka)
+;     N: poÃ¨et prvkÃ¹ pole A (32bitovÃ© Ã¨Ã­slo bez znamÃ©nka)
+;     x: hodnota x (16bitovÃ© Ã¨Ã­slo bez znamÃ©nka)
+;    pB: ukazatel na pole B (pole B bude obsahovat 16bitovÃ© hodnoty bez znamÃ©nka)
+;  - vÃ½stup:
+;    - EAX =  0: v pÃ¸Ã­padÃ¬, Å¾e nenastala Å¾Ã¡dnÃ¡ chyba  
+;    - EAX = -1: v pÃ¸Ã­padÃ¬, Å¾e je neplatnÃ½ ukazatel *pA (tj. pA == 0)
+;    - EAX = -2: v pÃ¸Ã­padÃ¬, Å¾e je neplatnÃ½ ukazatel *pB (tj. pB == 0)
+;  - funkce musÃ­ zachovat obsah vÅ¡ech registrÃ¹, kromÃ¬ registru EAX a pÃ¸Ã­znakovÃ©ho registru
 
 addX:
-    ENTER 1, 0
+    ENTER 4, 0
     PUSH ECX
     PUSH EBX
     
@@ -161,11 +161,11 @@ addX:
     RET
 
 ;
-;--- Úkol 3 ---
+;--- Ãškol 3 ---
 ;
-;Naprogramujte funkci "sort", která sestupnì (od nejvìtšího k nejmenšímu) seøadí pole 16bitovıch prvkù se znaménkem A. 
+;Naprogramujte funkci "sort", kterÃ¡ sestupnÃ¬ (od nejvÃ¬tÅ¡Ã­ho k nejmenÅ¡Ã­mu) seÃ¸adÃ­ pole 16bitovÃ½ch prvkÃ¹ se znamÃ©nkem A. 
 ;
-;Ukázka algoritmu øazení v jazyce C:
+;UkÃ¡zka algoritmu Ã¸azenÃ­ v jazyce C:
 ;
 ;int *pA, i, j, N;
 ;for(i = 0; i < N; i++) {
@@ -176,12 +176,12 @@ addX:
 ;
 ;void sort(short *pA, unsigned int N)
 ;  - vstup:
-;    ESI: ukazatel na pole A (pole A obsahuje 16bitové hodnoty se znaménkem)
-;    ECX: poèet prvkù pole A (32bitové èíslo bez znaménka)
-;  - funkce musí zachovat obsah všech registrù, kromì registru EAX a pøíznakového registru     
+;    ESI: ukazatel na pole A (pole A obsahuje 16bitovÃ© hodnoty se znamÃ©nkem)
+;    ECX: poÃ¨et prvkÃ¹ pole A (32bitovÃ© Ã¨Ã­slo bez znamÃ©nka)
+;  - funkce musÃ­ zachovat obsah vÅ¡ech registrÃ¹, kromÃ¬ registru EAX a pÃ¸Ã­znakovÃ©ho registru     
 
 sort:
-    ENTER 1, 0
+    ENTER 4, 0
     PUSH EAX
     PUSH ECX
     PUSH EDX
