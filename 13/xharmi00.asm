@@ -26,27 +26,27 @@ main:
 
     RET
 ;
-;--- Úkol 1 ---
+;--- Ãškol 1 ---
 ;
-;Naprogramujte funkci "task31", která pomocí koprocesoru FPU vypoèítá funkci f(x):
+;Naprogramujte funkci "task31", kterÃ¡ pomocÃ­ koprocesoru FPU vypoÄÃ­tÃ¡ funkci f(x):
 ;
 ;         sin(-2x + PI)
 ; f(x) = --------------
 ;            x - 5   
 ;
-;Funkci je pøedáván parametr x v resgistru EAX a vısledek vrací také v registru EAX jako 
-;32bitové èíslo v plovoucí øádové èárce.
+;Funkci je pÅ™edÃ¡vÃ¡n parametr x v resgistru EAX a vÃ½sledek vracÃ­ takÃ© v registru EAX jako 
+;32bitovÃ© ÄÃ­slo v plovoucÃ­ Å™Ã¡dovÃ© ÄÃ¡rce.
 ;
 ;  - vstup:
-;    - EAX: hodnota x (32bitové èíslo v plovoucí øádové èárce)
-;  - vıstup:
-;    - EAX = pùvodní hodnota x v pøípadì, e funkci nelze vypoèítat (tj. kdy je jmenovatel roven 0)
-;    - EAX = vısledek funkce f(x) (32bitové èíslo v plovoucí øádové èárce)
-;  - funkce musí zachovat obsah všech registrù, kromì registru EAX, registrù FPU a pøíznakového registru
-;  - nezapomeòte, e jmenovatel nesmí bıt 0 (tedy x - 5 <> 0) 
-;  - nepouívejte datovı segment, svá data ukládejte v pøípadì potøeby, na zásobník jako lokální promìnné 
+;    - EAX: hodnota x (32bitovÃ© ÄÃ­slo v plovoucÃ­ Å™Ã¡dovÃ© ÄÃ¡rce)
+;  - vÃ½stup:
+;    - EAX = pÅ¯vodnÃ­ hodnota x v pÅ™Ã­padÄ›, Å¾e funkci nelze vypoÄÃ­tat (tj. kdyÅ¾ je jmenovatel roven 0)
+;    - EAX = vÃ½sledek funkce f(x) (32bitovÃ© ÄÃ­slo v plovoucÃ­ Å™Ã¡dovÃ© ÄÃ¡rce)
+;  - funkce musÃ­ zachovat obsah vÅ¡ech registrÅ¯, kromÄ› registru EAX, registrÅ¯ FPU a pÅ™Ã­znakovÃ©ho registru
+;  - nezapomeÅˆte, Å¾e jmenovatel nesmÃ­ bÃ½t 0 (tedy x - 5 <> 0) 
+;  - nepouÅ¾Ã­vejte datovÃ½ segment, svÃ¡ data uklÃ¡dejte v pÅ™Ã­padÄ› potÅ™eby, na zÃ¡sobnÃ­k jako lokÃ¡lnÃ­ promÄ›nnÃ© 
 task31:
-    ENTER 2, 0
+    ENTER 8, 0
     
     %define X DWORD [EBP - 4]
     %define tmp DWORD [EBP - 8]
@@ -76,36 +76,36 @@ task31:
     LEAVE
     RET
 ;
-;--- Úkol 2 ---
+;--- Ãškol 2 ---
 ;
-;Naprogramujte funkci "task32", jejími vstupními parametry jsou ukazatele na pole 32bitovıch hodnot v plovoucí øádové
-;èárce pA a pB a poèet prvkù tìchto polí N (mùe bıt i 0), a vıstupem je hodnota 0 nebo 1 dle popisu níe. Funkce také
-;zkopíruje prvky z pole A do pole B funkcí "memcpy" (pozor, "memcpy" mìní obsah registrù ECX a EDX) a poté jednotlivé
-;prvky pole A transformuje funkcí "task31" z úkolu 1. Funkci se pøedávají parametry na zásobníku podle konvence jazyka C
-;a musí zachovat obsah registrù (kromì FPU, EAX a pøíznakù).
+;Naprogramujte funkci "task32", jejÃ­miÅ¾ vstupnÃ­mi parametry jsou ukazatele na pole 32bitovÃ½ch hodnot v plovoucÃ­ Å™Ã¡dovÃ©
+;ÄÃ¡rce pA a pB a poÄet prvkÅ¯ tÄ›chto polÃ­ N (mÅ¯Å¾e bÃ½t i 0), a vÃ½stupem je hodnota 0 nebo 1 dle popisu nÃ­Å¾e. Funkce takÃ©
+;zkopÃ­ruje prvky z pole A do pole B funkcÃ­ "memcpy" (pozor, "memcpy" mÄ›nÃ­ obsah registrÅ¯ ECX a EDX) a potÃ© jednotlivÃ©
+;prvky pole A transformuje funkcÃ­ "task31" z Ãºkolu 1. Funkci se pÅ™edÃ¡vajÃ­ parametry na zÃ¡sobnÃ­ku podle konvence jazyka C
+;a musÃ­ zachovat obsah registrÅ¯ (kromÄ› FPU, EAX a pÅ™Ã­znakÅ¯).
 ;
 ;int task32(float *pA, float *pB, unsigned int N)
 ;  - vstup:
-;    pA: ukazatel na pole A (pole A obsahuje 32bitové hodnoty v plovoucí øádové èárce)
-;    pB: ukazatel na pole B (pole B obsahuje 32bitové hodnoty v plovoucí øádové èárce)
-;     N: poèet prvkù polí A a B (32bitové èíslo bez znaménka, mùe bıt i 0!)
-;  - vıstup:
-;    - EAX = 0 pokud je ukazatel pA nebo pB neplatnı (tedy pA == 0 || pB == 0) nebo pokud je pole prázdné (N == 0)
-;    - EAX = 1 pokud vše probìhne bez chyby
-;  - funkce musí zachovat obsah všech registrù, kromì registru EAX, registrù FPU a pøíznakového registru
-;  - nepouívejte datovı segment, svá data ukládejte v pøípadì potøeby, na zásobník jako lokální promìnné
+;    pA: ukazatel na pole A (pole A obsahuje 32bitovÃ© hodnoty v plovoucÃ­ Å™Ã¡dovÃ© ÄÃ¡rce)
+;    pB: ukazatel na pole B (pole B obsahuje 32bitovÃ© hodnoty v plovoucÃ­ Å™Ã¡dovÃ© ÄÃ¡rce)
+;     N: poÄet prvkÅ¯ polÃ­ A a B (32bitovÃ© ÄÃ­slo bez znamÃ©nka, mÅ¯Å¾e bÃ½t i 0!)
+;  - vÃ½stup:
+;    - EAX = 0 pokud je ukazatel pA nebo pB neplatnÃ½ (tedy pA == 0 || pB == 0) nebo pokud je pole prÃ¡zdnÃ© (N == 0)
+;    - EAX = 1 pokud vÅ¡e probÄ›hne bez chyby
+;  - funkce musÃ­ zachovat obsah vÅ¡ech registrÅ¯, kromÄ› registru EAX, registrÅ¯ FPU a pÅ™Ã­znakovÃ©ho registru
+;  - nepouÅ¾Ã­vejte datovÃ½ segment, svÃ¡ data uklÃ¡dejte v pÅ™Ã­padÄ› potÅ™eby, na zÃ¡sobnÃ­k jako lokÃ¡lnÃ­ promÄ›nnÃ©
 ;
 ;Funkce "memcpy":
 ;    void* memcpy(void * destination, const void * source, size_t num)
 ;      - vstup:
-;          size: poèet bytù, které mají bıt rezervovány v pamìti,
-;          destination: ukazatel na cílové místo v panìti,
-;          source: ukazatel zdroje kopírovanıch dat
-;      - vıstup:
-;          funkce vrací ukazatel "destination"
-;      -- POZOR -- memcpy mìní obsah registrù EAX, ECX a EDX
+;          size: poÄet bytÅ¯, kterÃ© majÃ­ bÃ½t rezervovÃ¡ny v pamÄ›ti,
+;          destination: ukazatel na cÃ­lovÃ© mÃ­sto v panÄ›ti,
+;          source: ukazatel zdroje kopÃ­rovanÃ½ch dat
+;      - vÃ½stup:
+;          funkce vracÃ­ ukazatel "destination"
+;      -- POZOR -- memcpy mÄ›nÃ­ obsah registrÅ¯ EAX, ECX a EDX
 ;
-;Ukázka funkce "task32" v jazyce C:
+;UkÃ¡zka funkce "task32" v jazyce C:
 ;
 ;int task32(float *pA, float *pB, unsigned int N) {
 ;    if (pB != NULL && pA != NULL && N > 0) {
